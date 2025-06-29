@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 01 - Decomposto</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { 
+            font-family: sans-serif; 
+            max-width: 900px; /* Limita a largura para melhor leitura */
+            margin: 20px auto; /* Centraliza o conteúdo na página */
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container-enunciado"></div>
+    <div id="container-analise"></div>
+    <div id="container-algoritmo"></div>
+    <div id="container-estrutura"></div>
+    <div id="container-saida"></div>
+
+    <script>
+        // Função para carregar o conteúdo de um arquivo em um container
+        async function loadContent(file, containerId) {
+            try {
+                const response = await fetch(file);
+                const text = await response.text();
+                document.getElementById(containerId).innerHTML = text;
+            } catch (error) {
+                console.error('Erro ao carregar o arquivo:', error);
+                document.getElementById(containerId).innerHTML = `<p style="color:red;">Falha ao carregar ${file}</p>`;
+            }
+        }
+
+        // Carrega todos os conteúdos em seus respectivos containers
+        loadContent('exercicio01_enunciado.html', 'container-enunciado');
+        loadContent('exercicio01-analise.html', 'container-analise');
+        loadContent('exercicio01-algoritmo.html', 'container-algoritmo');
+        loadContent('java01-estrutura_basica.html', 'container-estrutura');
+        loadContent('java01-saida-dados-01.html', 'container-saida');
+    </script>
+</body>
+</html>
